@@ -90,6 +90,7 @@ img {
 @media screen and (max-width:1300px) {
 
     .calories {
+        margin-top: 25px;
         margin-right: 10%;
     }
     .buttons{
