@@ -10,6 +10,26 @@ const header = document.querySelector(".header");
 let calories = 0;
 result.innerHTML = calories;
 btn1.addEventListener("click", function(){
+   btn1Click();
+})
+
+btn2.addEventListener("click", function(){
+   btn2Click();
+})
+
+btn3.addEventListener("click", function(){
+   btn3Click();
+})
+
+btn4.addEventListener("click", function(){
+   btn4Click();
+})
+
+moon.addEventListener("click" ,function(){
+    DarkMode();
+ })
+
+function btn1Click(){
     btn1.classList.toggle("checked");
     if(btn1.classList.contains("checked")){
         calories = calories + 300;
@@ -18,9 +38,10 @@ btn1.addEventListener("click", function(){
         calories = calories - 300;
         result.innerHTML = calories;
     }
-})
+}
 
-btn2.addEventListener("click", function(){
+
+function btn2Click(){
     btn2.classList.toggle("checked");
     if(btn2.classList.contains("checked")){
         calories = calories + 400;
@@ -29,9 +50,9 @@ btn2.addEventListener("click", function(){
         calories = calories - 400;
         result.innerHTML = calories;
     }
-})
+}
 
-btn3.addEventListener("click", function(){
+function btn3Click(){
     btn3.classList.toggle("checked");
     if(btn3.classList.contains("checked")){
         calories = calories + 100;
@@ -40,9 +61,9 @@ btn3.addEventListener("click", function(){
         calories = calories - 100;
         result.innerHTML = calories;
     }
-})
+}
 
-btn4.addEventListener("click", function(){
+function btn4Click(){
     btn4.classList.toggle("checked");
     if(btn4.classList.contains("checked")){
         calories = calories + 200;
@@ -51,9 +72,9 @@ btn4.addEventListener("click", function(){
         calories = calories - 200;
         result.innerHTML = calories;
     }
-})
+}
 
-moon.addEventListener("click" ,function(){
+function DarkMode(){
     body.classList.toggle("dark-container");
     header.classList.toggle("dark-header");
     result.classList.toggle("numberCalories-dark");
@@ -62,4 +83,4 @@ moon.addEventListener("click" ,function(){
     }else{
         moon.innerHTML = '<i class="fas fa-moon"></i>';
     }
-})
+}
