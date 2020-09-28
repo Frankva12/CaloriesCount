@@ -40,7 +40,6 @@ function btn1Click(){
     }
 }
 
-
 function btn2Click(){
     btn2.classList.toggle("checked");
     if(btn2.classList.contains("checked")){

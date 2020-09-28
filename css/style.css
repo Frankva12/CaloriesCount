@@ -69,10 +69,10 @@
     flex-wrap: wrap;
 }
 
-.numberCalories {
+.number-calories {
     color: rgb(240, 1, 1);
 }
-.numberCalories-dark {
+.number-calories-dark {
     color: rgb(25, 209, 241);
 }
 
