@@ -1,85 +1,83 @@
-const btn1 = document.querySelector(".btn1");
-const btn2 = document.querySelector(".btn2");
-const btn3 = document.querySelector(".btn3");
-const btn4 = document.querySelector(".btn4");
-const result = document.querySelector(".numberCalories");
+const CaloriesData = [{
+        img: '../img/hamburguer.png',
+        calories: 120
+    },
+    {
+        img: '../img/pizza.png',
+        calories: 220
+    }, {
+        img: '../img/soda.png',
+        calories: 300
+    }, {
+        img: '../img/sorbete.png',
+        calories: 450
+    }
+]
+
+const buttons = document.querySelector(".buttons");
+const result = document.querySelector(".number-calories");
 const moon = document.querySelector(".btn-moon");
 const body = document.querySelector(".container");
 const header = document.querySelector(".header");
-
-let calories = 0;
+calories = 0;
 result.innerHTML = calories;
-btn1.addEventListener("click", function(){
-   btn1Click();
-})
 
-btn2.addEventListener("click", function(){
-   btn2Click();
-})
+function ShowFood() {
+    let container = "";
+    i = 0
+    CaloriesData.forEach(Calories => {
+        container += `
+            <button class="button" value = "${Calories.calories}">
+            <img src="${Calories.img}"></button>`
+        i++;
+    });
+    buttons.innerHTML = container;
+    loadEvent();
+}
+ShowFood();
 
-btn3.addEventListener("click", function(){
-   btn3Click();
-})
-
-btn4.addEventListener("click", function(){
-   btn4Click();
-})
-
-moon.addEventListener("click" ,function(){
+moon.addEventListener("click", function () {
     DarkMode();
- })
+})
 
-function btn1Click(){
-    btn1.classList.toggle("checked");
-    if(btn1.classList.contains("checked")){
-        calories = calories + 300;
-        result.innerHTML = calories;
-    }else{
-        calories = calories - 300;
-        result.innerHTML = calories;
-    }
+
+function loadEvent() {
+    const button = document.querySelectorAll(".button");
+    Array.from(button).forEach(button => {
+        button.addEventListener("click", () => {
+            countCalories(button);
+        })
+    })
 }
 
-function btn2Click(){
-    btn2.classList.toggle("checked");
-    if(btn2.classList.contains("checked")){
-        calories = calories + 400;
-        result.innerHTML = calories;
-    }else{
-        calories = calories - 400;
-        result.innerHTML = calories;
+function countCalories(buttons) {
+    if (buttons.className.includes("button")) {
+        buttons.className = "checked";
+        sumCalorie(parseInt(buttons.value));
+    } else {
+        buttons.className = "button"
+        lessCalorie(parseInt(buttons.value));
     }
+    result.innerHTML = calories;
 }
 
-function btn3Click(){
-    btn3.classList.toggle("checked");
-    if(btn3.classList.contains("checked")){
-        calories = calories + 100;
-        result.innerHTML = calories;
-    }else{
-        calories = calories - 100;
-        result.innerHTML = calories;
-    }
+function sumCalorie(numCalorie) {
+    calories += numCalorie;
 }
 
-function btn4Click(){
-    btn4.classList.toggle("checked");
-    if(btn4.classList.contains("checked")){
-        calories = calories + 200;
-        result.innerHTML = calories;
-    }else{
-        calories = calories - 200;
-        result.innerHTML = calories;
-    }
+function lessCalorie(numCalorie) {
+    calories -= numCalorie;
+    if (calories < 0)
+        calories = 0;
 }
 
-function DarkMode(){
+function DarkMode() {
     body.classList.toggle("dark-container");
     header.classList.toggle("dark-header");
     result.classList.toggle("numberCalories-dark");
-    if(body.classList.contains("dark-container")){
+    if (body.classList.contains("dark-container")) {
         moon.innerHTML = '<i class="fas fa-sun"></i>';
-    }else{
+    } else {
         moon.innerHTML = '<i class="fas fa-moon"></i>';
     }
 }
