@@ -76,9 +76,10 @@
     color: rgb(25, 209, 241);
 }
 
-img {
+.img-250 {
     width: 250px;
     height: 250px;
+    cursor: pointer;
 }
 
 .checked {

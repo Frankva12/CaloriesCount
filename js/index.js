@@ -28,7 +28,7 @@ function ShowFood() {
     CaloriesData.forEach(Calories => {
         container += `
             <button class="button" value = "${Calories.calories}">
-            <img src="${Calories.img}"></button>`
+            <img class="img-250" src="${Calories.img}"></button>`
         i++;
     });
     buttons.innerHTML = container;
@@ -43,7 +43,7 @@ moon.addEventListener("click", function () {
 
 function loadEvent() {
     const button = document.querySelectorAll(".button");
-    Array.from(button).forEach(button => {
+    button.forEach(button => {
         button.addEventListener("click", () => {
             countCalories(button);
         })
